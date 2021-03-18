@@ -1,4 +1,4 @@
-let displayValue = "";
+let displayValue = "0";
 
 function setDisplay(displayValue) {
     document.getElementById('display').innerText = displayValue;
@@ -6,11 +6,27 @@ function setDisplay(displayValue) {
 
 function buttonClick(e) {
     let button = e.target.innerText.toString();
-    displayValue = displayValue + " " + button;
-    setDisplay(displayValue);
+    // displayValue = displayValue + " " + button;
+    // setDisplay(displayValue);
+
+    switch(button) {
+        default:
+            displayValue += button;
+            setDisplay(displayValue);
+            break;
+        case "÷":
+        case "×":
+        case "+":
+            displayValue += " " + button + " ";
+            setDisplay(displayValue);
+            break;
+        case "-":
+        case "=":
+            break;
+    };
 };
 
-document.querySelectorAll('button').forEach(button => {button.addEventListener('click', buttonClick)});
+document.querySelectorAll('#key').forEach(button => {button.addEventListener('click', buttonClick)});
 
 function add(x, y) {return x + y};
 function subtract(x, y) {return x - y};

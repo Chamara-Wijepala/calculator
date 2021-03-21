@@ -4,6 +4,11 @@ function setDisplay(displayValue) {
     document.getElementById('display').innerText = displayValue;
 };
 
+function clearDisplay() {
+    displayValue = "0";
+    setDisplay(displayValue);
+};
+
 function buttonClick(e) {
     let button = e.target.innerText.toString();
     // displayValue = displayValue + " " + button;
@@ -26,7 +31,7 @@ function buttonClick(e) {
     };
 };
 
-document.querySelectorAll('#key').forEach(button => {button.addEventListener('click', buttonClick)});
+document.querySelectorAll('.key').forEach(button => {button.addEventListener('click', buttonClick)});
 
 function add(x, y) {return x + y};
 function subtract(x, y) {return x - y};

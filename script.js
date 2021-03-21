@@ -1,4 +1,7 @@
 let displayValue = "0";
+let operator = "";
+let num1 = "";
+let num2 = "";
 
 function setDisplay(displayValue) {
     document.getElementById('display').innerText = displayValue;
@@ -9,10 +12,10 @@ function clearDisplay() {
     setDisplay(displayValue);
 };
 
+document.querySelector('#clear').addEventListener('click', clearDisplay);
+
 function buttonClick(e) {
     let button = e.target.innerText.toString();
-    // displayValue = displayValue + " " + button;
-    // setDisplay(displayValue);
 
     switch(button) {
         default:

@@ -2,7 +2,6 @@ let displayValue = "";
 let operator = "";
 let num1 = "";
 let num2 = "";
-let currentValue = "";
 
 function setDisplay(displayValue) {
     document.getElementById('display').innerText = displayValue;
@@ -13,14 +12,7 @@ function clearDisplay() {
     setDisplay(displayValue);
 };
 
-function clear() {
-    operator = "";
-    num1 = "";
-    num2 = "";
-    currentValue = "";
-};
-
-document.querySelector('#clear').addEventListener('click', clear);
+document.querySelector('#clear').addEventListener('click', clearDisplay);
 
 function buttonClick(e) {
     let button = e.target.innerText.toString();
@@ -28,33 +20,42 @@ function buttonClick(e) {
     switch(button) {
         default:
             displayValue += button;
-            currentValue += button;
             setDisplay(displayValue);
             break;
         case "÷":
         case "×":
         case "+":
         case "-":
-            num1 = currentValue;
+            num1 = displayValue;
             operator = button;
-            displayValue += " " + button + " ";
-            currentValue = "";
+            displayValue = "";
             setDisplay(displayValue);
             break;
         case "=":
-            num2 = currentValue;
+            num2 = displayValue;
             operate(operator, num1, num2);
-            clear();
             break;
     };
 };
 
 document.querySelectorAll('.key').forEach(button => {button.addEventListener('click', buttonClick)});
 
-function add(x, y) {console.log(x + y)};
-function subtract(x, y) {console.log(x - y)};
-function multiply(x, y) {console.log(x * y)};
-function divide(x, y) {console.log(x / y)};
+function add(x, y) {
+    displayValue = x + y;
+    setDisplay(displayValue);
+};
+function subtract(x, y) {
+    displayValue = x - y;
+    setDisplay(displayValue);
+};
+function multiply(x, y) {
+    displayValue = x * y;
+    setDisplay(displayValue);
+};
+function divide(x, y) {
+    displayValue = x / y;
+    setDisplay(displayValue);
+};
 
 function operate(operator, num1, num2) {
     let value1 = Number(num1);

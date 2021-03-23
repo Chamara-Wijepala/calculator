@@ -7,21 +7,31 @@ function setDisplay(displayValue) {
     document.getElementById('display').innerText = displayValue;
 };
 
-function clearDisplay() {
+function clear() {
+    operator = "";
     displayValue = "";
     setDisplay(displayValue);
+    console.log("cleared");
 };
 
-document.querySelector('#clear').addEventListener('click', clearDisplay);
+document.querySelector('#clear').addEventListener('click', clear);
 
 function buttonClick(e) {
     let button = e.target.innerText.toString();
 
     switch(button) {
         default:
-            displayValue += button;
-            setDisplay(displayValue);
-            break;
+            if (operator !== "" && displayValue !== "") {
+                clear();
+                displayValue += button;
+                setDisplay(displayValue);
+                break;
+            }
+            else {
+                displayValue += button;
+                setDisplay(displayValue);
+                break;
+            };
         case "÷":
         case "×":
         case "+":

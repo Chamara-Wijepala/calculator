@@ -2,6 +2,7 @@ let displayValue = "";
 let operator = "";
 let num1 = "";
 let num2 = "";
+let resetCounter = "";
 
 function setDisplay(displayValue) {
     document.getElementById('display').innerText = displayValue;
@@ -11,7 +12,6 @@ function clear() {
     operator = "";
     displayValue = "";
     setDisplay(displayValue);
-    console.log("cleared");
 };
 
 document.querySelector('#clear').addEventListener('click', clear);
@@ -21,17 +21,15 @@ function buttonClick(e) {
 
     switch(button) {
         default:
-            if (operator !== "" && displayValue !== "") {
+            if (operator !== "" && resetCounter !== "") { //This runs second. Fix it.
                 clear();
                 displayValue += button;
                 setDisplay(displayValue);
                 break;
-            }
-            else {
-                displayValue += button;
-                setDisplay(displayValue);
-                break;
             };
+            displayValue += button; //This runs first
+            setDisplay(displayValue);
+            break;
         case "÷":
         case "×":
         case "+":
@@ -39,10 +37,12 @@ function buttonClick(e) {
             num1 = displayValue;
             operator = button;
             displayValue = "";
+            resetCounter = "";
             setDisplay(displayValue);
             break;
         case "=":
             num2 = displayValue;
+            resetCounter = button;
             operate(operator, num1, num2);
             break;
     };

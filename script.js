@@ -8,12 +8,21 @@ function setDisplay(displayValue) {
     document.getElementById('display').innerText = displayValue;
 };
 
+function clearDisplay() {
+    operator = "";
+    num1 = "";
+    num2 = "";
+    caseSelector = "";
+    displayValue = "";
+    setDisplay(displayValue);
+};
+
 function clear() {
     num1 = "";
     num2 = "";
 };
 
-document.querySelector('#clear').addEventListener('click', clear);
+document.querySelector('#clear').addEventListener('click', clearDisplay);
 
 function buttonClick(e) {
     let button = e.target.innerText.toString();

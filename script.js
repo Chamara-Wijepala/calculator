@@ -56,11 +56,11 @@ function buttonClick(e) {
         case "-":
             if (num1 !== "" && operator !== "") {
                 num2 = displayValue;
-                operator = button;
                 caseSelector = "1";
                 displayValue = "";
                 setDisplay(displayValue);
                 operate(operator, num1, num2);
+                operator = button;
                 console.log("3");
                 break;
             };

@@ -8,7 +8,7 @@ function setDisplay(displayValue) {
     document.getElementById('display').innerText = displayValue;
 };
 
-function clearDisplay() {
+function clearAll() {
     operator = "";
     num1 = "";
     num2 = "";
@@ -22,7 +22,7 @@ function clear() {
     num2 = "";
 };
 
-document.querySelector('#clear').addEventListener('click', clearDisplay);
+document.querySelector('#clear').addEventListener('click', clearAll);
 
 function buttonClick(e) {
     let button = e.target.innerText.toString();
@@ -34,21 +34,18 @@ function buttonClick(e) {
                 displayValue = "";
                 displayValue += button;
                 setDisplay(displayValue);
-                console.log("1");
                 break;
             }
-            else if (caseSelector === "1") {
+            else if (caseSelector === "2") {
                 caseSelector = "";
                 num1 = displayValue;
                 displayValue = "";
                 displayValue += button;
                 setDisplay(displayValue);
-                console.log("1.5");
                 break;
             }
             displayValue += button;
             setDisplay(displayValue);
-            console.log("2");
             break;
         case "÷":
         case "×":
@@ -56,26 +53,26 @@ function buttonClick(e) {
         case "-":
             if (num1 !== "" && operator !== "") {
                 num2 = displayValue;
-                caseSelector = "1";
+                caseSelector = "2";
                 displayValue = "";
                 setDisplay(displayValue);
                 operate(operator, num1, num2);
                 operator = button;
-                console.log("3");
                 break;
             };
             num1 = displayValue;
             operator = button;
-            caseSelector = "";
+            caseSelector = "1";
             displayValue = "";
             setDisplay(displayValue);
-            console.log("4");
             break;
         case "=":
+            if (caseSelector === "0") {
+                break;
+            }
             num2 = displayValue;
             caseSelector = "0";
             operate(operator, num1, num2);
-            console.log("5");
             break;
     };
 };
@@ -84,23 +81,30 @@ document.querySelectorAll('.key').forEach(button => {button.addEventListener('cl
 
 function add(x, y) {
     clear();
-    displayValue = x + y;
+    displayValue = (x + y).toFixed(2);
     setDisplay(displayValue);
 };
 function subtract(x, y) {
     clear();
-    displayValue = x - y;
+    displayValue = (x - y).toFixed(2);
     setDisplay(displayValue);
 };
 function multiply(x, y) {
     clear();
-    displayValue = x * y;
+    displayValue = (x * y).toFixed(2);
     setDisplay(displayValue);
 };
 function divide(x, y) {
-    clear();
-    displayValue = x / y;
-    setDisplay(displayValue);
+    if (x === 0 && y === 0) {
+        clear();
+        displayValue = "You can't divide by 0";
+        setDisplay(displayValue);
+    }
+    else {
+        clear();
+        displayValue = (x / y).toFixed(2);
+        setDisplay(displayValue);
+    };
 };
 
 function operate(operator, num1, num2) {

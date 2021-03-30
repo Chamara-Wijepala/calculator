@@ -28,6 +28,10 @@ function buttonClick(e) {
     let button = e.target.innerText.toString();
 
     switch(button) {
+        case ".":
+            if (displayValue.includes(".")) {
+                break;
+            }
         default:
             if (operator !== "" && caseSelector === "0") {
                 operator = "";

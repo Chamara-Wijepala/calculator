@@ -85,30 +85,46 @@ document.querySelectorAll('.key').forEach(button => {button.addEventListener('cl
 
 function add(x, y) {
     clear();
+    if (Number.isInteger(x) && Number.isInteger(y)) {
+        displayValue = x + y;
+    }
+    else {
     displayValue = (x + y).toFixed(2);
+    };
     setDisplay(displayValue);
 };
 function subtract(x, y) {
     clear();
+    if (Number.isInteger(x) && Number.isInteger(y)) {
+        displayValue = (x - y);
+    }
+    else {
     displayValue = (x - y).toFixed(2);
+    };
     setDisplay(displayValue);
 };
 function multiply(x, y) {
     clear();
-    displayValue = (x * y).toFixed(2);
+    if (Number.isInteger(x) && Number.isInteger(y)) {
+        displayValue = x * y;
+    }
+    else {
+        displayValue = (x * y).toFixed(2);
+    }
     setDisplay(displayValue);
 };
 function divide(x, y) {
+    clear();
     if (x === 0 && y === 0) {
-        clear();
         displayValue = "You can't divide by 0";
-        setDisplay(displayValue);
+    }
+    else if (Number.isInteger(x) && Number.isInteger(y)) {
+        displayValue = x / y;
     }
     else {
-        clear();
         displayValue = (x / y).toFixed(2);
-        setDisplay(displayValue);
     };
+    setDisplay(displayValue);
 };
 
 function operate(operator, num1, num2) {

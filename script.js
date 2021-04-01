@@ -23,7 +23,14 @@ function clear() {
 };
 
 function buttonClick(e) {
-    let button = e.target.innerText.toString();
+    let button;
+
+    if (e.type === "click") {
+        button = e.target.innerText.toString();
+    }
+    else {
+        button = e;
+    };
 
     switch(button) {
         case ".":
@@ -86,7 +93,51 @@ function buttonClick(e) {
     };
 };
 
+function buttonPress(e) {
+    let key = e.key;
+
+    switch(key) {
+        case "0":
+        case "1":
+        case "2":
+        case "3":
+        case "4":
+        case "5":
+        case "6":
+        case "7":
+        case "8":
+        case "9":
+        case ".":
+        case "-":
+        case "+":
+            buttonClick(key);
+            break;
+        case "*":
+            buttonClick("×");
+            break;
+        case "/":
+            buttonClick("÷");
+            break;
+        case "=":
+        buttonClick("+");
+        break;
+        case "Enter":
+            buttonClick("=");
+            break;
+        case "c":
+            buttonClick("AC");
+            break;
+        case "Backspace":
+            buttonClick("DEL");
+            break;
+        default:
+            break;
+    };
+};
+
 document.querySelectorAll('button').forEach(button => {button.addEventListener('click', buttonClick)});
+
+document.addEventListener('keydown', buttonPress);
 
 function add(x, y) {
     clear();

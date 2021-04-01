@@ -22,8 +22,6 @@ function clear() {
     num2 = "";
 };
 
-document.querySelector('#clear').addEventListener('click', clearAll);
-
 function buttonClick(e) {
     let button = e.target.innerText.toString();
 
@@ -78,10 +76,17 @@ function buttonClick(e) {
             caseSelector = "0";
             operate(operator, num1, num2);
             break;
+        case "DEL":
+            displayValue = displayValue.slice(0, -1);
+            setDisplay(displayValue);
+            break;
+        case "AC":
+            clearAll();
+            break;
     };
 };
 
-document.querySelectorAll('.key').forEach(button => {button.addEventListener('click', buttonClick)});
+document.querySelectorAll('button').forEach(button => {button.addEventListener('click', buttonClick)});
 
 function add(x, y) {
     clear();

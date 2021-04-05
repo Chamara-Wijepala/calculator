@@ -1,3 +1,7 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
 body {
     padding: 0%;
     margin: 0%;
@@ -9,6 +13,16 @@ main {
     align-items: center;
     width: 100vw;
     height: 100vh;
+}
+
+button {
+    outline: none;
+    border: none;
+    font-size: 3rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    background-color: #808080;
 }
 
 #display {
@@ -27,7 +41,7 @@ main {
     width: fit-content;
     height: fit-content;
     border: 30px solid #4e4e4e;
-    border-radius: 25px;
+    border-radius: 30px;
     background-color: #4e4e4e;
 }
 

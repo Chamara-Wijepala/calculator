@@ -1,0 +1,41 @@
+body {
+    padding: 0%;
+    margin: 0%;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+#display {
+    grid-column: 1 / -1;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    background-color: #c6efa5;
+}
+
+#keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 75px);
+    grid-template-rows: minmax(75px, auto) repeat(5, 75px);
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
+    width: fit-content;
+    height: fit-content;
+    border: 30px solid #4e4e4e;
+    border-radius: 25px;
+    background-color: #4e4e4e;
+}
+
+.equals, .operator {
+    background-color: #3ed0d3;
+}
+
+.span-two {
+    grid-column: span 2;
+    background-color: #f84150;
+}
